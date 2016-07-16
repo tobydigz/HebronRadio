@@ -67,9 +67,8 @@
             android:layout_height="48dp"
             android:layout_toRightOf="@id/dummy2"
             android:layout_centerVertical="true"
-            android:src="@drawable/button_stop_custom"
+            android:src="@drawable/ic_stop_white_48dp"
             />
-        <!--android:background="@drawable/button_stop_custom"-->
     </RelativeLayout>
 
 
