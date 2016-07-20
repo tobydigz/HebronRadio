@@ -188,7 +188,10 @@ public class MusicService extends Service implements MediaPlayer.OnPreparedListe
                 }
 
 
-                player.prepareAsync();
+                try {player.prepareAsync();}
+                catch (IllegalStateException ignore){
+
+                }
             } else {
                 go();
             }

@@ -246,7 +246,12 @@
                 android:paddingBottom="10dp"
                 android:paddingTop="50dp"
                 android:src="@mipmap/hebron_logo_white2"
-                tools:ignore="ContentDescription" />
+                tools:ignore="ContentDescription"
+                android:id="@+id/img1"/>
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_below="@id/img1"/>
         </RelativeLayout>
     </ScrollView>
 </LinearLayout>

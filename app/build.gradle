@@ -27,7 +27,6 @@ dependencies {
     compile project (":volley")
     compile 'com.google.android.gms:play-services-analytics:8.3.0'
     compile 'com.android.support:recyclerview-v7:23.3.0'
-    compile 'com.bignerdranch.android:expandablerecyclerview:2.1.1'
-    compile 'com.github.grennis:ExpandableRecyclerView:0.9.3'
+    compile project(':lib')
 
 }

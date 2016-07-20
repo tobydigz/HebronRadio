@@ -1,1 +1,1 @@
-include ':app', ':volley', ':expandablerecyclerview'
+include ':app', ':volley', ':lib'

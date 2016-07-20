@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="@dimen/standard_padding_small"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/sched_bg">
+
+    <ImageView android:id="@+id/item_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="@dimen/standard_padding"
+        android:src="@drawable/ic_description_white_36dp"
+        />
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:id="@+id/dummy"
+        android:layout_below="@id/item_image"
+        />
+
+    <TextView android:id="@+id/item_name"
+        tools:text=" Schedule day"
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:layout_toEndOf="@id/item_image"
+        android:layout_above="@id/dummy"
+        android:textColor="@color/Plain"
+        />
+
+</RelativeLayout>

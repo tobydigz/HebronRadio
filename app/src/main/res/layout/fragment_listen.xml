@@ -4,42 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
-    tools:context="com.digzdigital.hebronradio.listenFragment"
-    android:id="@+id/fragmentListen"
+tools:context="com.digzdigital.hebronradio.listenFragment"
+android:id="@+id/fragmentListen"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     >
 
-    <ImageView
-        android:id="@+id/listen_img"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:padding="20dp"
-        android:layout_above="@id/textView2"
-        android:src="@mipmap/hebron_logo_white2"
-        android:paddingBottom="35dp"/>
-
-      <com.digzdigital.hebronradio.MyTextView
-          android:id="@+id/textView2"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_centerHorizontal="true"
-          android:text="@string/listen"
-          android:textColor="@color/Plain"
-          android:layout_above="@id/plylay"
-          android:textSize="35dp"
-          android:textStyle="bold"
-          hebronradio:fontName="bariol.otf" />
 
 
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/spacer"/>
 
     <RelativeLayout
         android:id="@+id/plylay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_above="@id/spacer"
         android:background="@drawable/rect_div"
         android:elevation="4dp"
         >
@@ -70,6 +54,27 @@
             android:src="@drawable/ic_stop_white_48dp"
             />
     </RelativeLayout>
+    <com.digzdigital.hebronradio.MyTextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="@string/listen"
+        android:textColor="@color/Plain"
+        android:layout_above="@id/plylay"
+        android:textSize="35dp"
+        android:textStyle="bold"
+        hebronradio:fontName="bariol.otf" />
+
+    <ImageView
+        android:id="@+id/listen_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:padding="20dp"
+        android:layout_above="@id/textView2"
+        android:src="@mipmap/hebron_logo_white2"
+        android:paddingBottom="35dp"/>
 
 
 </RelativeLayout>

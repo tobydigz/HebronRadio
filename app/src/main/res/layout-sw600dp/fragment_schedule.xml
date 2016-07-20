@@ -31,121 +31,17 @@
                 android:textStyle="bold"
                 hebronradio:fontName="bariol.otf" />
 
-            <!--<RelativeLayout
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/textViewprog"
-                android:paddingTop="15dp"
-                android:layout_centerHorizontal="true"
-                android:id="@+id/weeklay">
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="55dp"
-                    android:layout_alignParentTop="true"
-                    android:background="@drawable/button_bg_custom"
-                    android:text="@string/mon"
-                    android:textColor="#ffffff"
-                    android:id="@+id/btnmon"
-                    android:textSize="18sp"/>
-                <Space
-                    android:layout_width="15dp"
-                    android:layout_height="8dp"
-                    android:id="@+id/dummy20"
-                    android:layout_below="@id/btnmon"
-                    android:layout_centerHorizontal="true"/>
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="55dp"
-                    android:layout_below="@id/dummy20"
-                    android:background="@drawable/button_bg_custom"
-                    android:text="@string/tue"
-                    android:textColor="#ffffff"
-                    android:id="@+id/btntue"
-                    android:textSize="18sp"/>
-                <Space
-                    android:layout_width="15dp"
-                    android:layout_height="8dp"
-                    android:id="@+id/dummy21"
-                    android:layout_below="@id/btntue"
-                    android:layout_centerHorizontal="true"/>
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="55dp"
-                    android:layout_below="@id/dummy21"
-                    android:background="@drawable/button_bg_custom"
-                    android:text="@string/wed"
-                    android:textColor="#ffffff"
-                    android:id="@+id/btnwed"
-                    android:textSize="18sp"/>
-                <Space
-                    android:layout_width="15dp"
-                    android:layout_height="8dp"
-                    android:id="@+id/dummy22"
-                    android:layout_below="@id/btnwed"
-                    android:layout_centerHorizontal="true"/>
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="55dp"
-                    android:layout_below="@+id/dummy22"
-                    android:background="@drawable/button_bg_custom"
-                    android:text="@string/thu"
-                    android:textColor="#ffffff"
-                    android:id="@+id/btnthu"
-                    android:textSize="18sp"/>
-                <Space
-                    android:layout_width="15dp"
-                    android:layout_height="8dp"
-                    android:id="@+id/dummy23"
-                    android:layout_below="@id/btnthu"
-                    android:layout_centerHorizontal="true"/>
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="55dp"
-                    android:layout_below="@id/dummy23"
-                    android:background="@drawable/button_bg_custom"
-                    android:text="@string/fri"
-                    android:textColor="#ffffff"
-                    android:id="@+id/btnfri"
-                    android:textSize="18sp"/>
-                <Space
-                    android:layout_width="15dp"
-                    android:layout_height="8dp"
-                    android:id="@+id/dummy24"
-                    android:layout_below="@id/btnfri"
-                    android:layout_centerHorizontal="true"/>
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="55dp"
-                    android:layout_below="@id/dummy24"
-                    android:background="@drawable/button_bg_custom"
-                    android:text="@string/sat"
-                    android:textColor="#ffffff"
-                    android:id="@+id/btnsat"
-                    android:textSize="18sp"/>
-                <Space
-                    android:layout_width="15dp"
-                    android:layout_height="8dp"
-                    android:id="@+id/dummy25"
-                    android:layout_below="@id/btnsat"
-                    android:layout_centerHorizontal="true"/>
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="55dp"
-                    android:layout_below="@id/dummy25"
-                    android:background="@drawable/button_bg_custom"
-                    android:text="@string/sun"
-                    android:textColor="#ffffff"
-                    android:id="@+id/btnsun"
-                    android:textSize="18sp"/>
-            </RelativeLayout>-->
+
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/weeklay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/textViewprog"
+                android:paddingTop="15dp"
                 android:layout_centerHorizontal="true"
-                android:paddingTop="15dp" />
+                android:divider="#000000"
+                />
 
             <ImageView
                 android:layout_width="wrap_content"

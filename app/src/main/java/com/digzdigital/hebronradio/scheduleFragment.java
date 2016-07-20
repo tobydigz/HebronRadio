@@ -12,6 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
+import com.innodroid.expandablerecycler.ExpandableRecyclerAdapter;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -21,6 +23,7 @@ import java.util.List;
  */
 public class scheduleFragment extends Fragment {
     private RecyclerView scheduleRecycler;
+    ScheduleAdapter adapter;
 
     public scheduleFragment() {
 
@@ -40,11 +43,13 @@ public class scheduleFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle a) {
         View view = inflater.inflate(R.layout.fragment_schedule, container, false);
 
-        generateSchedule();
 
         scheduleRecycler = (RecyclerView) view.findViewById(R.id.weeklay);
 
-
+        adapter = new ScheduleAdapter(getContext(), getResources());
+        adapter.setMode(ExpandableRecyclerAdapter.MODE_ACCORDION);
+        scheduleRecycler.setLayoutManager(new LinearLayoutManager(getContext()));
+        scheduleRecycler.setAdapter(adapter);
 
 
 
@@ -59,7 +64,6 @@ public class scheduleFragment extends Fragment {
         super.onSaveInstanceState(outState);
     }
 
-    private void generateSchedule() {
 
-    }
+
 }
