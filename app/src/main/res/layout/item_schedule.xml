@@ -24,11 +24,12 @@
     <TextView android:id="@+id/item_name"
         tools:text=" Schedule day"
         android:textStyle="bold"
+        android:paddingTop="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="12sp"
         android:layout_toEndOf="@id/item_image"
-        android:layout_above="@id/dummy"
+        android:layout_centerVertical="true"
         android:textColor="@color/Plain"
         />
 

@@ -40,7 +40,6 @@
                 android:layout_below="@id/textViewprog"
                 android:paddingTop="15dp"
                 android:layout_centerHorizontal="true"
-                android:divider="#000000"
                 />
 
             <ImageView

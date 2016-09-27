@@ -9,6 +9,7 @@ import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.support.design.widget.TabLayout;
@@ -31,15 +32,16 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.digzdigital.hebronradio.MusicService.MusicBinder;
-import com.google.android.gms.analytics.HitBuilders;
-import com.google.android.gms.analytics.Tracker;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
-
+    private static final int MY_PERMISSIONS_REQUEST_CALL_PHONE = 1;
     private static final String JSON_URL = "http://hebronfm.azurewebsites.net/updhebron.php";
     SharedPreferences mPrefs;
     //Declare declarables
@@ -53,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private ParseJSON pj;
     private String trackUri, trackUri2;
-    private Tracker digzTracker;
+    private FirebaseAnalytics firebaseAnalytics;
 
 
     //Connect to the service
@@ -81,7 +83,6 @@ public class MainActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         setupViewPager(viewPager);
@@ -90,25 +91,9 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager);
 
 
-        //Taking care of shared  Prefs
-        Context mContext = this.getApplicationContext();
-        mPrefs = mContext.getSharedPreferences("hebronfm", 0);
 
-        //Taking care of first run
-        if (getFirstRun()) {
-            setRunned();
-            SharedPreferences.Editor editor = mPrefs.edit();
-            editor.putString("link1", "http://10.0.3.21:8000/;stream.mp3");
-            editor.putString("link2", "http://80.248.0.231:8000/;stream.mp3");
-            editor.commit();
-        } else {
-
-        }
-        sendRequest();
-
-        DigzAnalytics application = (DigzAnalytics) getApplication();
-        digzTracker = application.getDefaultTracker();
-
+        new bgWork().execute(getApplicationContext());
+        firebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
     }
 
@@ -117,26 +102,6 @@ public class MainActivity extends AppCompatActivity {
         edit2.putString("link1", trackUri);
         edit2.putString("link2", trackUri2);
         edit2.commit();
-    }
-
-    public boolean getFirstRun() {
-        return mPrefs.getBoolean("firstRun", true);
-    }
-
-    public void setRunned() {
-        SharedPreferences.Editor edit = mPrefs.edit();
-        edit.putBoolean("firstRun", false);
-        edit.commit();
-    }
-
-    private void useJSON(String json) {
-        pj = new ParseJSON(json);
-        pj.parseJSON();
-
-        trackUri = "http://" + ParseJSON.trackUri + "/;stream.mp3";
-        trackUri2 = "http://" + ParseJSON.trackUri2 + "/;stream.mp3";
-
-
     }
 
     private void sendRequest() {
@@ -157,6 +122,16 @@ public class MainActivity extends AppCompatActivity {
                 });
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
+    }
+
+    private void useJSON(String json) {
+        pj = new ParseJSON(json);
+        pj.parseJSON();
+
+        trackUri = "http://" + ParseJSON.trackUri + "/;stream.mp3";
+        trackUri2 = "http://" + ParseJSON.trackUri2 + "/;stream.mp3";
+
+
     }
 
     private void setupViewPager(ViewPager viewPager) {
@@ -234,8 +209,9 @@ public class MainActivity extends AppCompatActivity {
         musicSrv.playSong();
         playBackPaused = false;
 
-        digzTracker.send(new HitBuilders.EventBuilder()
-                .setCategory("Action").setAction("Play").build());
+        Bundle bundle = new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, "Play Event");
+        firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
     }
 
     public void pause() {
@@ -311,21 +287,63 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void call() {
-        String phone = String.valueOf(R.string.dialler);
+        String phone = "08180696683";
         Intent callIntent = new Intent(Intent.ACTION_CALL);
         callIntent.setData(Uri.parse("tel:" + phone));
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
+            requestCallingPermission(MY_PERMISSIONS_REQUEST_CALL_PHONE);
             //    ActivityCompat#requestPermissions
             // here to request the missing permissions, and then overriding
             //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
             //                                          int[] grantResults)
             // to handle the case where the user grants the permission. See the documentation
             // for ActivityCompat#requestPermissions for more details.
-            startActivity(callIntent);
+//            startActivity(callIntent);
             return;
+        } else {
+            startActivity(callIntent);
         }
 
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case MY_PERMISSIONS_REQUEST_CALL_PHONE: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    call();
+                    // permission was granted, yay! Do the
+                    // contacts-related task you need to do.
+
+                } else {
+
+                    // permission denied, boo! Disable the
+                    // functionality that depends on this permission.
+                }
+                return;
+            }
+
+            // other 'case' lines to check for other
+            // permissions this app might request
+        }
+    }
+
+    public void requestCallingPermission(int requestCode) {
+        if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                Manifest.permission.CALL_PHONE)) {
+            // Display a dialog with rationale.
+            PermissionUtils.RationaleDialog
+                    .newInstance(requestCode, false).show(
+                    getSupportFragmentManager(), "dialog");
+        } else {
+            // Location permission has not been granted yet, request it.
+            PermissionUtils.requestPermission(this, requestCode,
+                    Manifest.permission.CALL_PHONE, false);
+        }
     }
 
 
@@ -339,6 +357,11 @@ public class MainActivity extends AppCompatActivity {
 
 
         }
+    }
+
+    public void showAds() {
+//        MobileAds.initialize(getApplicationContext(), "ca-app-pub-3940256099942544~3347511713");
+
     }
 
     class ViewPagerAdapter extends FragmentPagerAdapter {
@@ -370,5 +393,74 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private class bgWork extends AsyncTask<Context, Void, Void> {
 
+        private Context mContext;
+
+        @Override
+        protected Void doInBackground(Context... params) {
+            //Taking care of shared  Prefs
+            mContext = params[0];
+            mPrefs = mContext.getSharedPreferences("hebronfm", 0);
+
+            //Taking care of first run
+            if (getFirstRun()) {
+                setRunned();
+                SharedPreferences.Editor editor = mPrefs.edit();
+                editor.putString("link1", "http://10.0.3.21:8000/;stream.mp3");
+                editor.putString("link2", "http://80.248.0.231:8000/;stream.mp3");
+                editor.commit();
+            } else {
+
+            }
+            sendRequest();
+
+            return null;
+        }
+
+        private void updateLink() {
+            SharedPreferences.Editor edit2 = mPrefs.edit();
+            edit2.putString("link1", trackUri);
+            edit2.putString("link2", trackUri2);
+            edit2.commit();
+        }
+
+        public boolean getFirstRun() {
+            return mPrefs.getBoolean("firstRun", true);
+        }
+
+        public void setRunned() {
+            SharedPreferences.Editor edit = mPrefs.edit();
+            edit.putBoolean("firstRun", false);
+            edit.commit();
+        }
+
+        private void useJSON(String json) {
+            pj = new ParseJSON(json);
+            pj.parseJSON();
+
+            trackUri = "http://" + ParseJSON.trackUri + "/;stream.mp3";
+            trackUri2 = "http://" + ParseJSON.trackUri2 + "/;stream.mp3";
+
+
+        }
+
+        private void sendRequest() {
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, JSON_URL,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            useJSON(response);
+                            updateLink();
+                        }
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                        }
+                    });
+            RequestQueue requestQueue = Volley.newRequestQueue(mContext);
+            requestQueue.add(stringRequest);
+        }
+    }
 }

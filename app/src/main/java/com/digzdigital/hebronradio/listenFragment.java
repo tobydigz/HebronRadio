@@ -14,6 +14,10 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ToggleButton;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+
 /**
  * Created by Digz on 19/02/2016.
  */
@@ -21,6 +25,7 @@ public class listenFragment extends Fragment implements View.OnClickListener{
 
     private ToggleButton plysngbut;
     private ImageButton stpsng;
+    private AdView adView;
 
     public listenFragment(){
 
@@ -40,7 +45,11 @@ public class listenFragment extends Fragment implements View.OnClickListener{
         stpsng = (ImageButton) view.findViewById(R.id.stpsng);
         stpsng.setOnClickListener(this);
 
+        MobileAds.initialize(getContext(), "ca-app-pub-6610707566113750/5691382024");
 
+        adView = (AdView)view.findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
 
         return view;
     }
@@ -66,13 +75,27 @@ public class listenFragment extends Fragment implements View.OnClickListener{
         super.onResume();
         LocalBroadcastManager.getInstance(getActivity()).registerReceiver(mMessageReceiver,
                 new IntentFilter("digz-event"));
+        if (adView != null) {
+            adView.resume();
+        }
     }
 
     @Override
     public void onPause(){
         super.onPause();
         LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(mMessageReceiver);
+        if (adView != null) {
+            adView.pause();
+        }
         super.onPause();
+    }
+
+    @Override
+    public void onDestroy(){
+        super.onDestroy();
+        if (adView != null) {
+            adView.destroy();
+        }
     }
 
     public void setUnclicked(){

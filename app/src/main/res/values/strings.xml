@@ -9,7 +9,10 @@
     <string name="textTabTitle1">ABOUT US</string>
     <string name="textTabTitle2">LISTEN NOW</string>
     <string name="textTabTitle3">PROGRAMMES</string>
-
+    <!--Test-->
+    <!--<string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>-->
+    <!--Live-->
+    <string name="banner_ad_unit_id">ca-app-pub-6610707566113750/5691382024</string>
     <!--ABOUT US Strings-->
     <string name="aboutus1">About Us</string>
     <string name="aboutus2">
@@ -44,6 +47,9 @@
     <string name="faceHeb"><u>CUhebronFM</u></string>
     <string name="dialler"> <u>08180696683</u></string>
 
+    <string name="phone_permission_denied">Access to phone dialler is required</string>
+    <string name="permission_required_toast">Phone permission is required for this app</string>
+    <string name="phone_rationale_location">This app requires phone permission to call this number</string>
     <!--Schedule Strings TODO use arrays instead-->
     <string name="mon">Monday</string>
     <string name="tue">Tuesday</string>
@@ -54,7 +60,7 @@
     <string name="sun">Sunday</string>
     <array name="mon_ar">
         <item>NATIONAL/CU ANTHEM | 5:50 - 6:00am \n</item>
-        <item>INSPIRATION HOUR | 6:00 - 7:00am moments \n</item>
+        <item>INSPIRATION HOUR | 6:00 - 7:00am \n</item>
         <item>HEALTHY MOMENTS | 7:00 - 7:15am \n</item>
         <item>LEADERSHIP TALK | 7:15 - 7:30am \n</item>
         <item>HISTORY TODAY | 7:30 - 7:45am \n</item>
