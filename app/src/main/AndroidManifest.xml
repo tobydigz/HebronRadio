@@ -46,7 +46,10 @@
                 <action android:name="com.digzdigital.hebronradio.FORCE_WIDGET_UPDATE" />
             </intent-filter>
         </receiver>
-
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="5fca7f4c325391ce34f34edb995640e6f0567b3e"
+            />
         <meta-data
             android:name="android.appwidget.provider"
             android:resource="@xml/widget_provider_info" />
