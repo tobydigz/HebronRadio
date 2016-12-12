@@ -7,9 +7,6 @@
 
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
-        <item name="colorPrimary">@color/HebronText</item>
-        <item name="colorPrimaryDark">@color/HebronMain</item>
-        <item name="colorAccent">@color/colorAccent</item>
 
     </style>
     <style name="AppTheme.NoActionBar">

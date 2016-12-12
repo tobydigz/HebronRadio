@@ -32,8 +32,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.digzdigital.hebronradio.MusicService.MusicBinder;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.MobileAds;
+import com.digzdigital.hebronradio.fragment.aboutFragment;
+import com.digzdigital.hebronradio.fragment.listenFragment;
+import com.digzdigital.hebronradio.fragment.scheduleFragment;
 import com.google.firebase.analytics.FirebaseAnalytics;
 
 import java.util.ArrayList;
@@ -49,10 +50,7 @@ public class MainActivity extends AppCompatActivity {
     private Intent playIntent;
     private boolean musicBound = false;
     private boolean paused = false, playBackPaused = false;
-    private ToggleButton plysngbut;
     private Toolbar toolbar;
-    private TabLayout tabLayout;
-    private ViewPager viewPager;
     private ParseJSON pj;
     private String trackUri, trackUri2;
     private FirebaseAnalytics firebaseAnalytics;
@@ -78,17 +76,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main_container);
+        setContentView(R.layout.activity_main);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
 
-        viewPager = (ViewPager) findViewById(R.id.viewpager);
-        setupViewPager(viewPager);
-
-        tabLayout = (TabLayout) findViewById(R.id.tabs);
-        tabLayout.setupWithViewPager(viewPager);
 
 
 
@@ -134,13 +127,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void setupViewPager(ViewPager viewPager) {
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new listenFragment(), "LISTEN NOW");
-        adapter.addFragment(new scheduleFragment(), "SCHEDULE");
-        adapter.addFragment(new aboutFragment(), "ABOUT US");
-        viewPager.setAdapter(adapter);
-    }
+    // private void setupViewPager(ViewPager viewPager) {
+    //     ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+    //     adapter.addFragment(new listenFragment(), "LISTEN NOW");
+    //     adapter.addFragment(new scheduleFragment(), "SCHEDULE");
+    //     adapter.addFragment(new aboutFragment(), "ABOUT US");
+    //     viewPager.setAdapter(adapter);
+    // }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -364,7 +357,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    class ViewPagerAdapter extends FragmentPagerAdapter {
+    /*class ViewPagerAdapter extends FragmentPagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<>();
         private final List<String> mFragmentTitleList = new ArrayList<>();
 
@@ -391,7 +384,7 @@ public class MainActivity extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             return mFragmentTitleList.get(position);
         }
-    }
+    }*/
 
     private class bgWork extends AsyncTask<Context, Void, Void> {
 

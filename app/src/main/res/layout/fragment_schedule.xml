@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_vertical_margin"
     android:paddingRight="@dimen/activity_vertical_margin"
     android:orientation="vertical"
-    tools:context="com.digzdigital.hebronradio.scheduleFragment">
+    tools:context="com.digzdigital.hebronradio.fragment.scheduleFragment">
 
     <ScrollView
         android:id="@+id/tab3"

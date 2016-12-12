@@ -1,1 +1,1 @@
-include ':app', ':volley', ':lib'
+include ':app'

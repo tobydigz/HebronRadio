@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="HebronMain">#4c1661</color>
-    <color name="HebronMaintrans">#884c1661</color>
-    <color name="HebronMaintrans1">#704c1661</color>
-    <color name="HebronText">#6A1B9A</color>
-    <color name="HebronTextnew">#906A1B9A</color>
-    <color name="HebronText2">#7B1FA2</color>
+    <color name="colorPrimary">#8e24aa</color>
+    <color name="colorPrimaryDark">#4a148c</color>
+    <color name="colorAccent">#68efad</color>
     <color name="Plain">#ffffff</color>
     <color name="Dark">#000000</color>
-    <color name="colorAccent">#aa00ff</color>
     <color name="Dark2">#323232</color>
     <color name="lightGray">#e0e0e0</color>
 
