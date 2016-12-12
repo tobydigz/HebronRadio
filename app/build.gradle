@@ -15,8 +15,8 @@ android {
         applicationId "com.digzdigital.hebronradio"
         minSdkVersion 17
         targetSdkVersion 25
-        versionCode 10
-        versionName "1.4"
+        versionCode 12
+        versionName "2.2"
         buildConfigField "String", "CONSUMER_KEY", CONSUMER_KEY
         buildConfigField "String", "CONSUMER_SECRET", CONSUMER_SECRET
 

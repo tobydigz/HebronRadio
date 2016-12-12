@@ -21,8 +21,6 @@
             android:title="#HebroNation"/>
     </group>
     <item
-        android:menuCategory="alternative"
-
         android:title="More">
         <menu>
             <item
