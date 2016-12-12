@@ -446,6 +446,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }*/
 
+
     private class bgWork extends AsyncTask<Context, Void, Void> {
 
         private Context mContext;

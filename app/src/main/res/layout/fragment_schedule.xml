@@ -1,60 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:hebronradio="http://schemas.android.com/apk/res-auto"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="@dimen/activity_vertical_margin"
-    android:paddingRight="@dimen/activity_vertical_margin"
     android:orientation="vertical"
     tools:context="com.digzdigital.hebronradio.fragment.ScheduleFragment">
 
-    <ScrollView
-        android:id="@+id/tab3"
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/weeklay"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <com.digzdigital.hebronradio.MyTextView
-                android:id="@+id/textViewprog"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:gravity="center_horizontal"
-                android:paddingTop="85dp"
-                android:text="@string/progs"
-                android:textColor="@color/Plain"
-                android:textSize="52sp"
-                android:textStyle="bold"
-                hebronradio:fontName="bariol.otf" />
-
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/weeklay"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/textViewprog"
-                android:paddingTop="15dp"
-                android:layout_centerHorizontal="true"
-                />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/weeklay"
-                android:layout_centerHorizontal="true"
-                android:src="@mipmap/hebron_logo_white2"
-                android:id="@+id/img"/>
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_below="@id/img"/>
-
-        </RelativeLayout>
-    </ScrollView>
 </LinearLayout>

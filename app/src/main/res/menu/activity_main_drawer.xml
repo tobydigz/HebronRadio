@@ -21,15 +21,4 @@
             android:title="#HebroNation"/>
     </group>
 
-    <item
-        android:menuCategory="secondary"
-        android:title="">
-        <menu>
-            <item
-                android:id="@+id/nav_logout"
-                android:icon="@drawable/ic_exit_to_app_black_24dp"
-                android:title="Logout"/>
-        </menu>
-    </item>
-
 </menu>
