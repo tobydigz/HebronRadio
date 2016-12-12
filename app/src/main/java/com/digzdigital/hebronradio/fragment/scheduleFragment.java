@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 
 import com.digzdigital.hebronradio.R;
 import com.digzdigital.hebronradio.adapter.ScheduleAdapter;
+import com.digzdigital.hebronradio.fragment.viewpager.MyPagerAdapter;
+import com.digzdigital.hebronradio.fragment.viewpager.ZoomOutPageTransformer;
 import com.digzdigital.hebronradio.model.ScheduleItem;
 
 import org.json.JSONArray;
@@ -47,12 +49,30 @@ public class ScheduleFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle a) {
         View view = inflater.inflate(R.layout.fragment_schedule_parent, container, false);
         viewPager = (ViewPager) view.findViewById(R.id.scheduleContentFrame);
+        viewPager.setAdapter(buildAdapter());
 
-
+        viewPager.setPageTransformer(true, new ZoomOutPageTransformer());
         return view;
 
     }
 
+    private void setupViewPager(ViewPager viewPager) {
+        MyPagerAdapter adapter = new MyPagerAdapter(getActivity(), getChildFragmentManager());
+        adapter.addFragment(ScheduleDetails.newInstance(loadSchedule("mondaySchedule.json")), "MONDAY");
+        adapter.addFragment(ScheduleDetails.newInstance(loadSchedule("tuesdaySchedule.json")), "TUESDAY");
+        adapter.addFragment(ScheduleDetails.newInstance(loadSchedule("wednesdaySchedule.json")), "WEDNESDAY");
+        adapter.addFragment(ScheduleDetails.newInstance(loadSchedule("thursdaySchedule.json")), "THURSDAY");
+        adapter.addFragment(ScheduleDetails.newInstance(loadSchedule("fridaySchedule.json")), "FRIDAY");
+        adapter.addFragment(ScheduleDetails.newInstance(loadSchedule("saturdaySchedule.json")), "SATURDAY");
+        adapter.addFragment(ScheduleDetails.newInstance(loadSchedule("sundaySchedule.json")), "SUNDAY");
+        viewPager.setAdapter(adapter);
+    }
+
+
+
+    private PagerAdapter buildAdapter() {
+        return (new MyPagerAdapter(getActivity(), getChildFragmentManager()));
+    }
 
     private String readAssetsFile(String filePath) {
         StringBuilder buf = new StringBuilder();
