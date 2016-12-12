@@ -8,12 +8,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.digzdigital.hebronradio.BuildConfig;
 import com.digzdigital.hebronradio.R;
 import com.mopub.nativeads.MoPubAdAdapter;
+import com.twitter.sdk.android.Twitter;
+import com.twitter.sdk.android.core.TwitterAuthConfig;
 import com.twitter.sdk.android.mopub.TwitterMoPubAdAdapter;
 import com.twitter.sdk.android.mopub.TwitterStaticNativeAdRenderer;
 import com.twitter.sdk.android.tweetui.TweetTimelineListAdapter;
 import com.twitter.sdk.android.tweetui.UserTimeline;
+
+import io.fabric.sdk.android.Fabric;
 
 
 /**
@@ -33,6 +38,9 @@ public class TwitterFragment extends ListFragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_twitter, container, false);
+        TwitterAuthConfig authConfig = new TwitterAuthConfig(BuildConfig.CONSUMER_KEY, BuildConfig.CONSUMER_SECRET);
+        Fabric.with(getContext(),  new Twitter(authConfig));
+
         initTwitterTimeline();
         return view;
     }

@@ -1,257 +1,212 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:hebronradio="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.digzdigital.hebronradio.fragment.AboutFragment">
+    xmlns:hebronradio="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ScrollView
-        android:id="@+id/tab1"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        android:orientation="vertical"
+        tools:context="com.digzdigital.hebronradio.fragment.AboutFragment">
 
-        <RelativeLayout
+        <ScrollView
+            android:id="@+id/tab1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingBottom="10dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:paddingTop="10dp">
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-            <com.digzdigital.hebronradio.MyTextView
-                android:id="@+id/textViewabt1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:text="@string/aboutus1"
-                android:textColor="@color/Plain"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                hebronradio:fontName="bariol.otf" />
-
-            <com.digzdigital.hebronradio.MyTextView
-                android:id="@+id/textViewabt2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/textViewabt1"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="center"
-                android:gravity="center_horizontal"
-                android:paddingTop="8dp"
-                android:text="@string/aboutus2"
-                android:textAlignment="center"
-                android:textColor="@color/Plain"
-                android:textSize="21sp"
-                hebronradio:fontName="bariol.otf" />
-
-            <com.digzdigital.hebronradio.MyTextView
-                android:id="@+id/textViewabt3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/textViewabt2"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="center"
-                android:gravity="center_horizontal"
-                android:paddingTop="20dp"
-                android:text="@string/aboutus3"
-                android:textAlignment="center"
-                android:textColor="@color/Plain"
-                android:textSize="30sp"
-                hebronradio:fontName="bariol.otf" />
-
-
-
-            <com.digzdigital.hebronradio.MyTextView
-                android:id="@+id/textViewabt4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/textViewabt3"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="center"
-                android:gravity="center_horizontal"
-                android:paddingTop="8dp"
-                android:text="@string/aboutus4"
-                android:textAlignment="center"
-                android:textColor="@color/Plain"
-                android:textSize="21sp"
-                hebronradio:fontName="bariol.otf" />
-
-
-            <com.digzdigital.hebronradio.MyTextView
-                android:id="@+id/textViewabt5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/textViewabt4"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="center"
-                android:gravity="center_horizontal"
-                android:paddingTop="20dp"
-                android:text="@string/aboutus5"
-                android:textAlignment="center"
-                android:textColor="@color/Plain"
-                android:textSize="30sp"
-                hebronradio:fontName="bariol.otf" />
-
-            <com.digzdigital.hebronradio.MyTextView
-                android:id="@+id/textViewabt6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/textViewabt5"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="center"
-                android:gravity="center_horizontal"
-                android:paddingTop="8dp"
-                android:text="@string/aboutus6"
-                android:textAlignment="center"
-                android:textColor="@color/Plain"
-                android:textSize="21sp"
-                hebronradio:fontName="bariol.otf" />
-
-            <com.digzdigital.hebronradio.MyTextView
-                android:id="@+id/textViewabt7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/textViewabt6"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="center"
-                android:gravity="center_horizontal"
-                android:paddingTop="16dp"
-                android:text="@string/aboutus7"
-                android:textAlignment="center"
-                android:textColor="@color/Plain"
-                android:textSize="30sp"
-                hebronradio:fontName="bariol.otf" />
-
-            <com.digzdigital.hebronradio.MyTextView
-                android:id="@+id/textViewabt8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/textViewabt7"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="center"
-                android:gravity="center_horizontal"
-                android:paddingTop="8dp"
-                android:text="@string/aboutus8"
-                android:textAlignment="center"
-                android:textColor="@color/Plain"
-                android:textSize="21sp"
-                hebronradio:fontName="bariol.otf" />
-
-            <com.digzdigital.hebronradio.MyTextView
-                android:id="@+id/textViewabt9"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/textViewabt8"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="center"
-                android:gravity="center_horizontal"
-                android:paddingTop="16dp"
-                android:text="@string/aboutus9"
-                android:textAlignment="center"
-                android:textColor="@color/Plain"
-                android:textSize="30sp"
-                hebronradio:fontName="bariol.otf" />
-
-            <com.digzdigital.hebronradio.MyTextView
-                android:id="@+id/dialHeb"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/textViewabt9"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="center"
-                android:clickable="true"
-                android:gravity="center_horizontal"
-                android:paddingTop="2dp"
-                android:text="@string/dialler"
-                android:textAlignment="center"
-                android:textColor="@color/Plain"
-                android:textSize="21sp"
-                hebronradio:fontName="bariol.otf"
-                />
-
-            <com.digzdigital.hebronradio.MyTextView
-                android:id="@+id/emailHeb"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/dialHeb"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="center"
-                android:gravity="center_horizontal"
-                android:paddingTop="2dp"
-                android:text="@string/emailHeb"
-                android:textAlignment="center"
-                android:textColor="@color/Plain"
-                android:textSize="21sp"
-                hebronradio:fontName="bariol.otf"
-                android:clickable="true"/>
-
-            <com.digzdigital.hebronradio.MyTextView
-                android:id="@+id/instaHeb"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/emailHeb"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="center"
-                android:gravity="center_horizontal"
-                android:paddingTop="2dp"
-                android:text="@string/instaHeb"
-                android:textAlignment="center"
-                android:textColor="@color/Plain"
-                android:textSize="21sp"
-                hebronradio:fontName="bariol.otf"
-                android:clickable="true"/>
-
-            <com.digzdigital.hebronradio.MyTextView
-                android:id="@+id/twitHeb"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/instaHeb"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="center"
-                android:gravity="center_horizontal"
-                android:paddingTop="2dp"
-                android:text="@string/twitHeb"
-                android:textAlignment="center"
-                android:textColor="@color/Plain"
-                android:textSize="21sp"
-                hebronradio:fontName="bariol.otf"
-                android:clickable="true"/>
-
-            <com.digzdigital.hebronradio.MyTextView
-                android:id="@+id/faceHeb"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/twitHeb"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="center"
-                android:gravity="center_horizontal"
-                android:paddingTop="2dp"
-                android:text="@string/faceHeb"
-                android:textAlignment="center"
-                android:textColor="@color/Plain"
-                android:textSize="21sp"
-                hebronradio:fontName="bariol.otf"
-                android:clickable="true"/>
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/faceHeb"
-                android:layout_centerHorizontal="true"
-                android:paddingBottom="10dp"
-                android:paddingTop="50dp"
-                android:src="@mipmap/hebron_logo_white2"
-                tools:ignore="ContentDescription"
-                android:id="@+id/img1"/>
-            <Space
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_below="@id/img1"/>
-        </RelativeLayout>
-    </ScrollView>
-</LinearLayout>
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="10dp">
+
+                <com.digzdigital.hebronradio.MyTextView
+                    android:id="@+id/textViewabt1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/aboutus1"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    hebronradio:fontName="bariol.otf"/>
+
+                <com.digzdigital.hebronradio.MyTextView
+                    android:id="@+id/textViewabt2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textViewabt1"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center"
+                    android:gravity="center_horizontal"
+                    android:paddingTop="8dp"
+                    android:text="@string/aboutus2"
+                    android:textAlignment="center"
+                    android:textSize="21sp"
+                    hebronradio:fontName="bariol.otf"/>
+
+                <com.digzdigital.hebronradio.MyTextView
+                    android:id="@+id/textViewabt3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textViewabt2"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center"
+                    android:gravity="center_horizontal"
+                    android:paddingTop="20dp"
+                    android:text="@string/aboutus3"
+                    android:textAlignment="center"
+                    android:textSize="30sp"
+                    hebronradio:fontName="bariol.otf"/>
+
+
+                <com.digzdigital.hebronradio.MyTextView
+                    android:id="@+id/textViewabt4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textViewabt3"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center"
+                    android:gravity="center_horizontal"
+                    android:paddingTop="8dp"
+                    android:text="@string/aboutus4"
+                    android:textAlignment="center"
+                    android:textSize="21sp"
+                    hebronradio:fontName="bariol.otf"/>
+
+
+                <com.digzdigital.hebronradio.MyTextView
+                    android:id="@+id/textViewabt5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textViewabt4"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center"
+                    android:gravity="center_horizontal"
+                    android:paddingTop="20dp"
+                    android:text="@string/aboutus5"
+                    android:textAlignment="center"
+                    android:textSize="30sp"
+                    hebronradio:fontName="bariol.otf"/>
+
+                <com.digzdigital.hebronradio.MyTextView
+                    android:id="@+id/textViewabt6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textViewabt5"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center"
+                    android:gravity="center_horizontal"
+                    android:paddingTop="8dp"
+                    android:text="@string/aboutus6"
+                    android:textAlignment="center"
+                    android:textSize="21sp"
+                    hebronradio:fontName="bariol.otf"/>
+
+                <com.digzdigital.hebronradio.MyTextView
+                    android:id="@+id/textViewabt7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textViewabt6"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center"
+                    android:gravity="center_horizontal"
+                    android:paddingTop="16dp"
+                    android:text="@string/aboutus7"
+                    android:textAlignment="center"
+                    android:textSize="30sp"
+                    hebronradio:fontName="bariol.otf"/>
+
+                <com.digzdigital.hebronradio.MyTextView
+                    android:id="@+id/textViewabt8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textViewabt7"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center"
+                    android:gravity="center_horizontal"
+                    android:paddingTop="8dp"
+                    android:text="@string/aboutus8"
+                    android:textAlignment="center"
+                    android:textSize="21sp"
+                    hebronradio:fontName="bariol.otf"/>
+
+                <com.digzdigital.hebronradio.MyTextView
+                    android:id="@+id/textViewabt9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textViewabt8"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center"
+                    android:gravity="center_horizontal"
+                    android:paddingTop="16dp"
+                    android:text="@string/aboutus9"
+                    android:textAlignment="center"
+                    android:textSize="30sp"
+                    hebronradio:fontName="bariol.otf"/>
+
+                <Button
+                    android:id="@+id/dialHeb"
+                    style="@style/Base.Widget.AppCompat.Button.Borderless"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textViewabt9"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:text="@string/dialler"
+                    android:textAlignment="center"
+                    android:textSize="21sp"/>
+
+
+                <ImageButton
+                    android:id="@+id/instaHeb"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_below="@id/dialHeb"
+                    android:layout_marginStart="30dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/instagram_color"/>
+
+                <ImageButton
+                    android:id="@+id/twitHeb"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_below="@id/dialHeb"
+                    android:layout_marginEnd="30dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/twitter"/>
+
+                <ImageButton
+                    android:id="@+id/faceHeb"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_below="@id/twitHeb"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="6dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/facebook"/>
+
+                <ImageButton
+                    android:id="@+id/emailHeb"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_below="@id/twitHeb"
+                    android:layout_marginEnd="30dp"
+                    android:layout_marginTop="6dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:scaleType="centerInside"
+                    android:src="@mipmap/gmail_icon"/>
+            </RelativeLayout>
+        </ScrollView>
+    </LinearLayout>
+</layout>

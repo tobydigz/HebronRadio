@@ -1,6 +1,7 @@
 package com.digzdigital.hebronradio.fragment;
 
 import android.content.Intent;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -10,10 +11,12 @@ import android.widget.TextView;
 
 import com.digzdigital.hebronradio.MainActivity;
 import com.digzdigital.hebronradio.R;
+import com.digzdigital.hebronradio.databinding.FragmentAboutBinding;
 
 
 public class AboutFragment extends Fragment implements View.OnClickListener {
 
+    private FragmentAboutBinding binding;
     public AboutFragment() {
 
     }
@@ -25,23 +28,19 @@ public class AboutFragment extends Fragment implements View.OnClickListener {
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle a) {
-        View view = inflater.inflate(R.layout.fragment_about, container, false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_about, container, false);
 
-        TextView email = (TextView) view.findViewById(R.id.emailHeb);
-        email.setOnClickListener(this);
 
-        TextView instagram = (TextView) view.findViewById(R.id.instaHeb);
-        instagram.setOnClickListener(this);
+        binding.emailHeb.setOnClickListener(this);
 
-        TextView twitter = (TextView) view.findViewById(R.id.twitHeb);
-        twitter.setOnClickListener(this);
+        binding.instaHeb.setOnClickListener(this);
 
-        TextView dialler = (TextView) view.findViewById(R.id.dialHeb);
-        dialler.setOnClickListener(this);
+        binding.twitHeb.setOnClickListener(this);
 
-        TextView facebook = (TextView) view.findViewById(R.id.faceHeb);
-        facebook.setOnClickListener(this);
-        return view;
+        binding.dialHeb.setOnClickListener(this);
+
+        binding.faceHeb.setOnClickListener(this);
+        return binding.getRoot();
     }
 
     @Override

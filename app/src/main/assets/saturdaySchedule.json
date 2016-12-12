@@ -1,0 +1,75 @@
+{
+    "Day" : {
+      "day": "Saturday",
+      "items": [
+        {
+          "event": "National/CU ANTHEM",
+          "time": "5:50am - 6:00am"
+        },
+        {
+          "event": "MUSIC/DCA",
+          "time": "6:00 - 7:30am"
+        },
+        {
+          "event": "REQUEST/MUSIC",
+          "time": "7:30 - 8:00am"
+        },
+        {
+          "event": "MUSIC/MYSTERY OF BOOKS",
+          "time": "8:00 - 10:00am"
+        },
+        {
+          "event": "IDILE AYO",
+          "time": "10:00 - 11:00am"
+        },
+        {
+          "event": "DYNAMIC TALENT",
+          "time": "11:00 - 1:00pm"
+        },
+        {
+          "event": "SPORT ARENA",
+          "time": "1:00 - 2:00pm"
+        },
+        {
+          "event": "NEWS WEEK REVIEW",
+          "time": "2:00 - 2:15pm"
+        },
+        {
+          "event": "MUSIC/DCA",
+          "time": "2:15 - 3:00pm"
+        },
+        {
+          "event": "RADIO DRAMA",
+          "time": "3:00 - 4:00pm"
+        },
+        {
+          "event": "RADIO ACTIVITY",
+          "time": "4:00 - 5:00pm"
+        },
+        {
+          "event": "ILERA LORO",
+          "time": "5:00 - 6:00pm"
+        },
+        {
+          "event": "HEBRON FM NEWS",
+          "time": "6:00 - 6:10pm"
+        },
+        {
+          "event": "CELEBRATION BELLS",
+          "time": "6:10 - 7:00pm"
+        },
+        {
+          "event": "SATURDAY BANT",
+          "time": "7:00 - 8:00pm"
+        },
+        {
+          "event": "LOVE ZONE",
+          "time": "8:00 - 9:55pm"
+        },
+        {
+          "event": "SHUTDOWN",
+          "time": "9:55 - 10:00pm"
+        }
+      ]
+    }
+}

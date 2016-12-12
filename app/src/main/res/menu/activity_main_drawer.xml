@@ -20,5 +20,15 @@
             android:icon="@drawable/tw__ic_logo_default"
             android:title="#HebroNation"/>
     </group>
+    <item
+        android:menuCategory="alternative"
 
+        android:title="More">
+        <menu>
+            <item
+                android:id="@+id/nav_exit"
+                android:icon="@drawable/ic_exit_to_app_black_24dp"
+                android:title="Exit"/>
+        </menu>
+    </item>
 </menu>

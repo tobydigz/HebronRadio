@@ -1,10 +1,12 @@
 package com.digzdigital.hebronradio.fragment;
 
 
+import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +15,14 @@ import com.digzdigital.hebronradio.R;
 import com.digzdigital.hebronradio.adapter.ScheduleAdapter;
 import com.digzdigital.hebronradio.model.ScheduleItem;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 
@@ -25,6 +35,7 @@ public class ScheduleDetails extends Fragment {
     private static final String ARG_PARAM1 = "schedule";
 
     private ArrayList<ScheduleItem> scheduleItems;
+    private String filePath;
     private RecyclerView rv;
     private ScheduleAdapter scheduleAdapter;
 
@@ -36,14 +47,14 @@ public class ScheduleDetails extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param scheduleItems Parameter 1.
+     * @param filepath Parameter 1.
      * @return A new instance of fragment ScheduleDetails.
      */
     // TODO: Rename and change types and number of parameters
-    public static ScheduleDetails newInstance(ArrayList<ScheduleItem> scheduleItems) {
+    public static ScheduleDetails newInstance(String filepath) {
         ScheduleDetails fragment = new ScheduleDetails();
         Bundle args = new Bundle();
-        args.putParcelableArrayList(ARG_PARAM1, scheduleItems);
+        args.putString(ARG_PARAM1, filepath);
         fragment.setArguments(args);
         return fragment;
     }
@@ -52,7 +63,7 @@ public class ScheduleDetails extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            scheduleItems = getArguments().getParcelableArrayList(ARG_PARAM1);
+            filePath = getArguments().getString(ARG_PARAM1);
         }
     }
 
@@ -60,9 +71,17 @@ public class ScheduleDetails extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_schedule_details, container, false);
+        View view = inflater.inflate(R.layout.fragment_schedule, container, false);
         rv = (RecyclerView) view.findViewById(R.id.weeklay);
+
         return view;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        scheduleItems = loadSchedule(filePath);
+        doRest();
     }
 
     private void doRest() {
@@ -81,5 +100,52 @@ public class ScheduleDetails extends Fragment {
         });
 
 
+    }
+
+    private String readAssetsFile(String filePath) {
+        AssetManager assetManager = getActivity().getAssets();
+        InputStream inputStream;
+        String text = null;
+        StringBuilder buf = new StringBuilder();
+        InputStream json = null;
+        try {
+            json = assetManager.open(filePath);
+            BufferedReader in =
+                    new BufferedReader(new InputStreamReader(json, "UTF-8"));
+            String str;
+            while ((str = in.readLine()) != null) {
+                buf.append(str);
+            }
+
+            in.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return buf.toString();
+
+
+    }
+
+    private ArrayList<ScheduleItem> loadSchedule(String filepath) {
+        Log.d("DIGZ:HEBRON", "I got here");
+        ArrayList<ScheduleItem> scheduleItems = new ArrayList<>();
+
+        try {
+            JSONObject jsonObject = new JSONObject(readAssetsFile(filepath));
+            JSONObject day = jsonObject.getJSONObject("Day");
+            JSONArray items = day.getJSONArray("items");
+
+            for (int i = 0; i < items.length(); i++) {
+                JSONObject object = items.getJSONObject(i);
+                String name = object.getString("event");
+                String time = object.getString("time");
+                ScheduleItem scheduleItem = new ScheduleItem(i, name, time);
+                scheduleItems.add(scheduleItem);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return scheduleItems;
     }
 }

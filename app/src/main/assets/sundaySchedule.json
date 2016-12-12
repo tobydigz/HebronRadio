@@ -1,0 +1,67 @@
+{
+    "Day" : {
+      "day": "Sunday",
+      "items": [
+        {
+          "event": "National/CU ANTHEM",
+          "time": "5:50 - 6:00am"
+        },
+        {
+          "event": "WORSHIP SONGS",
+          "time": "6:00 - 7:00am"
+        },
+        {
+          "event": "BISHOP OYEDEPO MESSAGES",
+          "time": "7:00 - 8:00am"
+        },
+        {
+          "event": "HYMNALS",
+          "time": "8:00 - 10:00am"
+        },
+        {
+          "event": "MUSIC/DCA",
+          "time": "10:00 - 11:00am"
+        },
+        {
+          "event": "IMO BIBELI",
+          "time": "11:00 - 12:00pm"
+        },
+        {
+          "event": "GOSPEL JAMZ",
+          "time": "12:00 - 1:00pm"
+        },
+        {
+          "event": "MUSIC/DCA",
+          "time": "1:00 - 2:00pm"
+        },
+        {
+          "event": "HEBRON FM NEWS",
+          "time": "2:00 - 2:15pm"
+        },
+        {
+          "event": "RADIO DRAMA",
+          "time": "2:15 - 3:00pm"
+        },
+        {
+          "event": "ENTERTAINMENT ZONE",
+          "time": "3:00 - 4:00pm"
+        },
+        {
+          "event": "YOUTH CONNECT",
+          "time": "4:00 - 5:00pm"
+        },
+        {
+          "event": "HEBRON FM NEWS",
+          "time": "6:00 - 6:10pm"
+        },
+        {
+          "event": "MUSIC/DCA",
+          "time": "6:10 - 9:55pm"
+        },
+        {
+          "event": "SHUTDOWN",
+          "time": "9:55 - 10:00pm"
+        }
+      ]
+    }
+}

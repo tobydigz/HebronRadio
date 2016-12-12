@@ -207,11 +207,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_end:
-                stopService(playIntent);
-                musicSrv = null;
-                System.exit(0);
-                break;
             case R.id.action_refresh:
                 sendRequest();
                 break;
@@ -401,6 +396,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_twitter:
                 if (twitterFragment == null) twitterFragment = new TwitterFragment();
                 startFragment(twitterFragment);
+                break;
+            case R.id.nav_exit:
+                stopService(playIntent);
+                musicSrv = null;
+                System.exit(0);
                 break;
         }
 

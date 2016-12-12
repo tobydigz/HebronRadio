@@ -10,19 +10,27 @@ android {
     compileSdkVersion 25
     buildToolsVersion "25.0.1"
 
+    dataBinding.enabled = true
     defaultConfig {
         applicationId "com.digzdigital.hebronradio"
         minSdkVersion 17
         targetSdkVersion 25
         versionCode 10
         versionName "1.4"
+        buildConfigField "String", "CONSUMER_KEY", CONSUMER_KEY
+        buildConfigField "String", "CONSUMER_SECRET", CONSUMER_SECRET
+
     }
     buildTypes {
+
         release {
             minifyEnabled false
+//            buildConfigField "String", "CONSUMER_KEY", "\$(consumerKey)\""
+//            buildConfigField "String", "CONSUMER_SECRET", "\$(consumerSecret)\""
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    sourceSets { main { assets.srcDirs = ['src/main/assets', 'src/main/assets/2'] } }
 }
 
 dependencies {
