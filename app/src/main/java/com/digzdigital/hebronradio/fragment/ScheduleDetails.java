@@ -10,7 +10,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.digzdigital.hebronradio.MainActivity;
 import com.digzdigital.hebronradio.R;
 import com.digzdigital.hebronradio.adapter.ScheduleAdapter;
 import com.digzdigital.hebronradio.model.ScheduleItem;
@@ -33,11 +35,14 @@ import java.util.ArrayList;
  */
 public class ScheduleDetails extends Fragment {
     private static final String ARG_PARAM1 = "schedule";
+    private static final String ARG_PARAM2 = "day";
 
     private ArrayList<ScheduleItem> scheduleItems;
     private String filePath;
+    private String day;
     private RecyclerView rv;
     private ScheduleAdapter scheduleAdapter;
+    private TextView dayText;
 
     public ScheduleDetails() {
         // Required empty public constructor
@@ -48,13 +53,15 @@ public class ScheduleDetails extends Fragment {
      * this fragment using the provided parameters.
      *
      * @param filepath Parameter 1.
+     * @param day Parameter 2.
      * @return A new instance of fragment ScheduleDetails.
      */
     // TODO: Rename and change types and number of parameters
-    public static ScheduleDetails newInstance(String filepath) {
+    public static ScheduleDetails newInstance(String filepath, String day) {
         ScheduleDetails fragment = new ScheduleDetails();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, filepath);
+        args.putString(ARG_PARAM2, day);
         fragment.setArguments(args);
         return fragment;
     }
@@ -64,6 +71,7 @@ public class ScheduleDetails extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             filePath = getArguments().getString(ARG_PARAM1);
+            day = getArguments().getString(ARG_PARAM2);
         }
     }
 
@@ -73,7 +81,8 @@ public class ScheduleDetails extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_schedule, container, false);
         rv = (RecyclerView) view.findViewById(R.id.weeklay);
-
+        dayText = (TextView) view.findViewById(R.id.scheduleDay);
+        dayText.setText(day);
         return view;
     }
 
@@ -89,7 +98,7 @@ public class ScheduleDetails extends Fragment {
         LinearLayoutManager llm = new LinearLayoutManager(getContext());
         rv.setLayoutManager(llm);
         if (scheduleItems == null) return;
-        if (scheduleItems.size() > 0) return;
+        if (scheduleItems.size() == 0) return;
         scheduleAdapter = new ScheduleAdapter(scheduleItems);
         rv.setAdapter(scheduleAdapter);
 
@@ -101,6 +110,7 @@ public class ScheduleDetails extends Fragment {
 
 
     }
+
 
     private String readAssetsFile(String filePath) {
         AssetManager assetManager = getActivity().getAssets();
@@ -121,7 +131,9 @@ public class ScheduleDetails extends Fragment {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return buf.toString();
+        String output = buf.toString();
+        Log.d("DIGZ:HEBRON", output);
+        return output;
 
 
     }

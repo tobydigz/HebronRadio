@@ -38,6 +38,7 @@ public class MyPagerAdapter extends FragmentStatePagerAdapter {
     public String getPageTitle(int position) {
         return(fragmentTitleList.get(position));
     }
+
     public void addFragment(Fragment fragment, String title) {
         fragmentList.add(fragment);
         fragmentTitleList.add(title);

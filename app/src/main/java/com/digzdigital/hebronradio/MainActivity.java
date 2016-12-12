@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private ParseJSON pj;
     private String trackUri, trackUri2;
     private FirebaseAnalytics firebaseAnalytics;
+    private Toolbar toolbar;
 
 
     //Connect to the service
@@ -78,7 +79,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
 
@@ -93,6 +94,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         fragmentManager = getSupportFragmentManager();
         listenFragment = new ListenFragment();
         startFragment(listenFragment);
+        changeToolbarTitle("Hebron Radio");
 
 
         new bgWork().execute(getApplicationContext());
@@ -100,6 +102,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
+    public void changeToolbarTitle(String title){
+        toolbar.setTitle(title);
+    }
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -384,18 +389,25 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_listen:
                 if (listenFragment == null) listenFragment = new ListenFragment();
                 startFragment(listenFragment);
+                changeToolbarTitle("Hebron Radio");
+
                 break;
             case R.id.nav_schedule:
                 if (scheduleFragment == null) scheduleFragment = new ScheduleFragment();
                 startFragment(scheduleFragment);
+                changeToolbarTitle("Mondaay's Schedule");
+
                 break;
             case R.id.nav_about:
                 if (aboutFragment == null) aboutFragment = new AboutFragment();
                 startFragment(aboutFragment);
+                changeToolbarTitle("About Us");
                 break;
             case R.id.nav_twitter:
                 if (twitterFragment == null) twitterFragment = new TwitterFragment();
                 startFragment(twitterFragment);
+                changeToolbarTitle("#HebroNation");
+
                 break;
             case R.id.nav_exit:
                 stopService(playIntent);
