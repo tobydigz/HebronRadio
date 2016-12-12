@@ -25,7 +25,7 @@ import pl.bclogic.pulsator4droid.library.PulsatorLayout;
 /**
  * Created by Digz on 19/02/2016.
  */
-public class listenFragment extends Fragment implements View.OnClickListener {
+public class ListenFragment extends Fragment implements View.OnClickListener {
 
     private ToggleButton plysngbut;
     private Button stpsng;
@@ -48,7 +48,7 @@ public class listenFragment extends Fragment implements View.OnClickListener {
     };
 
 
-    public listenFragment() {
+    public ListenFragment() {
 
     }
 

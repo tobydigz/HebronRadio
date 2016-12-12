@@ -12,9 +12,9 @@ import com.digzdigital.hebronradio.MainActivity;
 import com.digzdigital.hebronradio.R;
 
 
-public class aboutFragment extends Fragment implements View.OnClickListener {
+public class AboutFragment extends Fragment implements View.OnClickListener {
 
-    public aboutFragment() {
+    public AboutFragment() {
 
     }
 

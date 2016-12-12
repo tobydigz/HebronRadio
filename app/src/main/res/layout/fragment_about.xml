@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.digzdigital.hebronradio.fragment.aboutFragment">
+    tools:context="com.digzdigital.hebronradio.fragment.AboutFragment">
 
     <ScrollView
         android:id="@+id/tab1"

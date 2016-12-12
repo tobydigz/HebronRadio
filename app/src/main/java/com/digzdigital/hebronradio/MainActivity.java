@@ -12,18 +12,19 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.IBinder;
-import android.support.design.widget.TabLayout;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ToggleButton;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -32,25 +33,24 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.digzdigital.hebronradio.MusicService.MusicBinder;
-import com.digzdigital.hebronradio.fragment.aboutFragment;
-import com.digzdigital.hebronradio.fragment.listenFragment;
-import com.digzdigital.hebronradio.fragment.scheduleFragment;
+import com.digzdigital.hebronradio.fragment.AboutFragment;
+import com.digzdigital.hebronradio.fragment.ListenFragment;
+import com.digzdigital.hebronradio.fragment.ScheduleFragment;
+import com.digzdigital.hebronradio.fragment.TwitterFragment;
 import com.google.firebase.analytics.FirebaseAnalytics;
 
-import java.util.ArrayList;
-import java.util.List;
 
-
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private static final int MY_PERMISSIONS_REQUEST_CALL_PHONE = 1;
     private static final String JSON_URL = "http://hebronfm.azurewebsites.net/updhebron.php";
-    SharedPreferences mPrefs;
+    private SharedPreferences mPrefs;
+    private FragmentManager fragmentManager;
+    private Fragment listenFragment, aboutFragment, scheduleFragment, twitterFragment;
     //Declare declarables
     private MusicService musicSrv;
     private Intent playIntent;
     private boolean musicBound = false;
     private boolean paused = false, playBackPaused = false;
-    private Toolbar toolbar;
     private ParseJSON pj;
     private String trackUri, trackUri2;
     private FirebaseAnalytics firebaseAnalytics;
@@ -78,17 +78,39 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
 
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.setDrawerListener(toggle);
+        toggle.syncState();
 
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+        fragmentManager = getSupportFragmentManager();
+        listenFragment = new ListenFragment();
+        startFragment(listenFragment);
 
 
         new bgWork().execute(getApplicationContext());
         firebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
     }
+
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+
 
     private void updateLink() {
         SharedPreferences.Editor edit2 = mPrefs.edit();
@@ -129,9 +151,9 @@ public class MainActivity extends AppCompatActivity {
 
     // private void setupViewPager(ViewPager viewPager) {
     //     ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-    //     adapter.addFragment(new listenFragment(), "LISTEN NOW");
-    //     adapter.addFragment(new scheduleFragment(), "SCHEDULE");
-    //     adapter.addFragment(new aboutFragment(), "ABOUT US");
+    //     adapter.addFragment(new ListenFragment(), "LISTEN NOW");
+    //     adapter.addFragment(new ScheduleFragment(), "SCHEDULE");
+    //     adapter.addFragment(new AboutFragment(), "ABOUT US");
     //     viewPager.setAdapter(adapter);
     // }
 
@@ -357,6 +379,44 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @SuppressWarnings("StatementWithEmptyBody")
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+
+        switch (item.getItemId()){
+            case R.id.nav_listen:
+                if (listenFragment == null) listenFragment = new ListenFragment();
+                startFragment(listenFragment);
+                break;
+            case R.id.nav_schedule:
+                if (scheduleFragment == null) scheduleFragment = new ScheduleFragment();
+                startFragment(scheduleFragment);
+                break;
+            case R.id.nav_about:
+                if (aboutFragment == null) aboutFragment = new AboutFragment();
+                startFragment(aboutFragment);
+                break;
+            case R.id.nav_twitter:
+                if (twitterFragment == null) twitterFragment = new TwitterFragment();
+                startFragment(twitterFragment);
+                break;
+        }
+
+
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+    private void startFragment(Fragment fragment){
+        fragmentManager.beginTransaction()
+                .replace(R.id.contentFrame, fragment)
+                .addToBackStack(null)
+                .commit();
+    }
     /*class ViewPagerAdapter extends FragmentPagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<>();
         private final List<String> mFragmentTitleList = new ArrayList<>();

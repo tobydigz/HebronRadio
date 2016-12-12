@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,16 +16,16 @@ import com.digzdigital.hebronradio.adapter.ScheduleAdapter;
 /**
  * Created by Digz on 19/02/2016. ds
  */
-public class scheduleFragment extends Fragment {
+public class ScheduleFragment extends Fragment {
     private RecyclerView scheduleRecycler;
     private ScheduleAdapter adapter;
 
-    public scheduleFragment() {
+    public ScheduleFragment() {
 
     }
 
     public static Intent newIntent(Context context) {
-        return new Intent(context, scheduleFragment.class);
+        return new Intent(context, ScheduleFragment.class);
     }
 
 
